@@ -1,19 +1,19 @@
 #!/usr/bin/python3
-"""Returns the top ten hot posts."""
+"""Returns the top ten hot posts for a given subreddit."""
 import requests
 
 
 def top_ten(subreddit):
-    """Query Reddit API and return the top ten hot posts."""
+    """Query Reddit API and print top ten hot post titles."""
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    custom_headers = {"User-Agent": "MyApp/1.0"}
+    headers = {"User-Agent": "linux:top_ten:1.0 (by /u/dorcase)"}
     params = {"limit": 10}
-    response = requests.get(url, headers=custom_headers, allow_redirects=False, params=params)
+    response = requests.get(
+        url, headers=headers, allow_redirects=False, params=params)
     if response.status_code == 200:
         data = response.json()
         posts = data.get("data").get("children")
         for post in posts:
-            titles = post.get("data").get("title")
-            print(titles)
+            print(post.get("data").get("title"))
     else:
         print(None)
