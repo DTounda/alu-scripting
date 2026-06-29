@@ -6,10 +6,7 @@ import requests
 def top_ten(subreddit):
     """Query Reddit API and print top ten hot post titles."""
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {
-        "User-Agent": "python:api_advanced:1.0 (by /u/dorcase)",
-        "Accept": "application/json"
-    }
+    headers = {"User-Agent": "MyBot/0.0.1"}
     params = {"limit": 10}
     response = requests.get(url, headers=headers,
                             allow_redirects=False, params=params)
