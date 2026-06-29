@@ -6,10 +6,13 @@ import requests
 def top_ten(subreddit):
     """Query Reddit API and print top ten hot post titles."""
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {"User-Agent": "linux:top_ten:1.0 (by /u/dorcase)"}
+    headers = {
+        "User-Agent": "python:api_advanced:1.0 (by /u/dorcase)",
+        "Accept": "application/json"
+    }
     params = {"limit": 10}
-    response = requests.get(
-        url, headers=headers, allow_redirects=False, params=params)
+    response = requests.get(url, headers=headers,
+                            allow_redirects=False, params=params)
     if response.status_code == 200:
         data = response.json()
         posts = data.get("data").get("children")
