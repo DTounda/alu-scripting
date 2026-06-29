@@ -5,7 +5,7 @@ import requests
 
 def number_of_subscribers(subreddit):
     """Query Reddit API and return subscriber count for a subreddit."""
-    url = (f"https://www.reddit.com/r/{subreddit}/about.json")
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
     custom_headers = {"User-Agent": "MyApp/1.0"}
     response = requests.get(url, headers=custom_headers, allow_redirects=False)
     if response.status_code == 200:
